@@ -1,4 +1,4 @@
-﻿namespace WM.DevFreela.Application.ViewModels
+﻿namespace WM.DevFreela.Application.Queries.GetUser
 {
     public class UserViewModel
     {
@@ -7,7 +7,6 @@
             FullName = fullName;
             Email = email;
         }
-
         public string FullName { get; private set; }
         public string Email { get; private set; }
     }

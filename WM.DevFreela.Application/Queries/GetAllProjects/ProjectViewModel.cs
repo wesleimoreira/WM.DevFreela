@@ -1,4 +1,4 @@
-﻿namespace WM.DevFreela.Application.ViewModels
+﻿namespace WM.DevFreela.Application.Queries.GetAllProjects
 {
     public class ProjectViewModel
     {

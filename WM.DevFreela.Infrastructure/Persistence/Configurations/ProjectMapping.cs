@@ -13,7 +13,7 @@ namespace WM.DevFreela.Infrastructure.Persistence.Configurations
             builder.Property(x => x.Title).HasColumnType("NVARCHAR(100)");
             builder.Property(x => x.TotalCost).HasColumnType("DECIMAL(10.2)");
             builder.Property(x => x.Description).HasColumnType("NVARCHAR(500)");
-            builder.HasOne(x => x.Cliente).WithMany(x => x.OwnedProjects).HasForeignKey(x => x.ClienteId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Client).WithMany(x => x.OwnedProjects).HasForeignKey(x => x.ClienteId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.Freelancer).WithMany(x => x.FreelanceProjects).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.Restrict);
         }
     }

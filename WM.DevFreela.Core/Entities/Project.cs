@@ -29,7 +29,7 @@ namespace WM.DevFreela.Core.Entities
 
         // propriedades de navegação
         public int ClienteId { get; private set; }
-        public User Cliente { get; private set; }
+        public User Client { get; private set; }
         public int FreelancerId { get; private set; }
         public User Freelancer { get; private set; }
 
