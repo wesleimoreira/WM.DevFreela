@@ -1,30 +1,23 @@
-﻿using Dapper;
-using MediatR;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+﻿using MediatR;
+using WM.DevFreela.Core.Dtos;
+using WM.DevFreela.Core.Repositories;
 
 namespace WM.DevFreela.Application.Queries.GetUser
 {
-    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserViewModel>
+    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserDto>
     {
-        private readonly string _connectionString;
-        public GetUserQueryHandler(IConfiguration configuration)
+        private readonly IUserRepository _userRepository;
+
+        public GetUserQueryHandler(IUserRepository userRepository)
         {
-            _connectionString = configuration.GetConnectionString("DevFreelaCs");
+            _userRepository = userRepository;
         }
 
-        public async Task<UserViewModel> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public async Task<UserDto> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
-            using (var sqlConnection = new SqlConnection(_connectionString))
-            {
-                sqlConnection.Open();
+            var user = await _userRepository.GetById(request.Id);
 
-                var script = "SELECT ID, Description, FROM Skills WHERE Id = @id;";
-
-                var users = await sqlConnection.QueryAsync<UserViewModel>(sql: script, param: new { id = request.Id });
-
-                return users.FirstOrDefault();
-            }
+            return new UserDto(user.FullName, user.Email);
         }
     }
 }

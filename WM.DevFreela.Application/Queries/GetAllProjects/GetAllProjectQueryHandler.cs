@@ -1,30 +1,21 @@
-﻿using Dapper;
-using MediatR;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+﻿using MediatR;
+using WM.DevFreela.Core.Dtos;
+using WM.DevFreela.Core.Repositories;
 
 namespace WM.DevFreela.Application.Queries.GetAllProjects
 {
-    public class GetAllProjectQueryHandler : IRequestHandler<GetAllProjectQuery, IEnumerable<ProjectViewModel>>
+    public class GetAllProjectQueryHandler : IRequestHandler<GetAllProjectQuery, IEnumerable<ProjectDto>>
     {
-        private readonly string _connectionString;
-        public GetAllProjectQueryHandler(IConfiguration configuration)
+        private readonly IProjectRepository _repository;
+
+        public GetAllProjectQueryHandler(IProjectRepository repository)
         {
-            _connectionString = configuration.GetConnectionString("DevFreelaCs");
+            _repository = repository;
         }
 
-        public async Task<IEnumerable<ProjectViewModel>> Handle(GetAllProjectQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProjectDto>> Handle(GetAllProjectQuery request, CancellationToken cancellationToken)
         {
-            using (var sqlConnection = new SqlConnection(_connectionString))
-            {
-                sqlConnection.Open();
-
-                var script = "SELECT Id, Title, Description, TotalCost, CreatedAt FROM Projects;";
-
-                var projects = await sqlConnection.QueryAsync<ProjectViewModel>(script);
-
-                return projects.ToList();
-            }
+            return await _repository.GetAll();
         }
     }
 }

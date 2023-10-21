@@ -1,8 +1,8 @@
-﻿namespace WM.DevFreela.Application.Queries.GetAllSkills
+﻿namespace WM.DevFreela.Core.Dtos
 {
-    public class SkillViewModel
+    public class SkillDto
     {
-        public SkillViewModel(int id, string description, DateTime createdAt)
+        public SkillDto(int id, string description, DateTime createdAt)
         {
             Id = id;
             CreatedAt = createdAt;

@@ -72,9 +72,7 @@ namespace WM.DevFreela.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] UpdateProjectCommand command)
         {
-            var projectId = await _mediator.Send(command);
-
-            if (projectId == 0) return NotFound();
+            await _mediator.Send(command);
 
             return NoContent();
         }

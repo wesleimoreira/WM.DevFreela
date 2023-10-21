@@ -9,7 +9,7 @@ namespace WM.DevFreela.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Skill> builder)
         {
             builder.ToTable("Skills");
-            builder.HasKey(x => x.Id);  
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Description).HasColumnType("NVARCHAR(500)");
         }
     }

@@ -8,7 +8,6 @@ namespace WM.DevFreela.Application.Commands.StartProject
         {
             Id = id;
         }
-
         public int Id { get; private set; }
     }
 }

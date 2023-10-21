@@ -1,8 +1,8 @@
-﻿namespace WM.DevFreela.Application.Queries.GetAllProjects
+﻿namespace WM.DevFreela.Core.Dtos
 {
-    public class ProjectViewModel
+    public class ProjectDto
     {
-        public ProjectViewModel(int id, string title, decimal totalCost, string description, DateTime createdAt)
+        public ProjectDto(int id, string title, decimal totalCost, string description, DateTime createdAt)
         {
             Id = id;
             Title = title;

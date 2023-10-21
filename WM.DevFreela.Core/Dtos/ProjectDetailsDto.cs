@@ -1,8 +1,8 @@
-﻿namespace WM.DevFreela.Application.Queries.GetProjectById
+﻿namespace WM.DevFreela.Core.Dtos
 {
-    public class ProjectDetailsViewModel
+    public class ProjectDetailsDto
     {
-        public ProjectDetailsViewModel(int id, string title, string description, decimal totalCost, DateTime? startedAt, DateTime? finishedAt, string clientFullName, string freelancerFullName)
+        public ProjectDetailsDto(int id, string title, string description, decimal totalCost, DateTime? startedAt, DateTime? finishedAt, string clientFullName, string freelancerFullName)
         {
             Id = id;
             Title = title;
@@ -22,5 +22,10 @@
         public DateTime? FinishedAt { get; private set; }
         public string ClientFullName { get; private set; }
         public string FreelancerFullName { get; private set; }
+
+        public void Cancel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

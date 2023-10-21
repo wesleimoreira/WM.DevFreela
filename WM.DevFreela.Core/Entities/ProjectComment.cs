@@ -10,7 +10,7 @@
             CreatedAt = DateTime.Now;
         }
 
-        public string Content { get; private set; }       
+        public string Content { get; private set; }
         public DateTime CreatedAt { get; private set; }
 
         // propriedades de navegação

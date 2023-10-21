@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using WM.DevFreela.Core.Dtos;
 
 namespace WM.DevFreela.Application.Queries.GetProjectById
 {
-    public class GetProjectByIdQuery : IRequest<ProjectDetailsViewModel>
+    public class GetProjectByIdQuery : IRequest<ProjectDetailsDto>
     {
         public GetProjectByIdQuery(int id)
         {

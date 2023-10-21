@@ -1,8 +1,8 @@
-﻿namespace WM.DevFreela.Application.Queries.GetUser
+﻿namespace WM.DevFreela.Core.Dtos
 {
-    public class UserViewModel
+    public class UserDto
     {
-        public UserViewModel(string fullName, string email)
+        public UserDto(string fullName, string email)
         {
             FullName = fullName;
             Email = email;

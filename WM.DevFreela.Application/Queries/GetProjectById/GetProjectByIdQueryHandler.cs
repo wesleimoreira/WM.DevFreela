@@ -1,37 +1,31 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
-using WM.DevFreela.Infrastructure.Persistence;
+using WM.DevFreela.Core.Dtos;
+using WM.DevFreela.Core.Repositories;
 
 namespace WM.DevFreela.Application.Queries.GetProjectById
 {
-    public class GetProjectByIdQueryHandler : IRequestHandler<GetProjectByIdQuery, ProjectDetailsViewModel>
+    public class GetProjectByIdQueryHandler : IRequestHandler<GetProjectByIdQuery, ProjectDetailsDto>
     {
-        private readonly DevFreelaDbContext _dbContext;
-        public GetProjectByIdQueryHandler(DevFreelaDbContext dbContext)
+        private readonly IProjectRepository _projectRepository;
+
+        public GetProjectByIdQueryHandler(IProjectRepository projectRepository)
         {
-            _dbContext = dbContext;
+            _projectRepository = projectRepository;
         }
 
-        public async Task<ProjectDetailsViewModel> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ProjectDetailsDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
-            var project = await _dbContext.Projects
-                .Include(p => p.Client)
-                .Include(p => p.Freelancer)
-                .SingleOrDefaultAsync(p => p.Id == request.Id);
+            var project = await _projectRepository.GetById(request.Id);
 
-            if (project == null) return null;
-
-            var projectDetailsViewModel = new ProjectDetailsViewModel(
-                project.Id,
-                project.Title,
-                project.Description,
-                project.TotalCost,
-                project.StartedAt,
-                project.FinishedAt,
-                project.Client.FullName,
-                project.Freelancer.FullName);
-
-            return projectDetailsViewModel;
+            return new ProjectDetailsDto(
+                        project.Id,
+                        project.Title,
+                        project.Description,
+                        project.TotalCost,
+                        project.StartedAt,
+                        project.FinishedAt,
+                        project.Client.FullName,
+                        project.Freelancer.FullName);
         }
     }
 }
