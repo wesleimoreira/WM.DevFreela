@@ -1,23 +1,20 @@
-﻿using FluentValidation;
-using MediatR;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WM.DevFreela.Application.Commands.CreateUser;
+using WM.DevFreela.Application.Commands.LoginUser;
 using WM.DevFreela.Application.Queries.GetUser;
 
 namespace WM.DevFreela.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IValidator<CreateUserCommand> _validator;
+        public UsersController(IMediator mediator) => _mediator = mediator;
 
-        public UsersController(IMediator mediator, IValidator<CreateUserCommand> validator)
-        {
-            _mediator = mediator;
-            _validator = validator;
-        }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
@@ -30,18 +27,25 @@ namespace WM.DevFreela.Api.Controllers
             return Ok(user);
         }
 
-        [HttpPost]      
+        [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
         {
-            var result = await _validator.ValidateAsync(command);
-
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(x => x.ErrorMessage));
-
             var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id }, command);
         }
 
+        [AllowAnonymous]
+        [HttpPut("login")]
+        public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
+        {
+            var loginUser = await _mediator.Send(command);
+
+            if (loginUser == null)
+                return BadRequest();
+
+            return Ok(loginUser);
+        }
     }
 }

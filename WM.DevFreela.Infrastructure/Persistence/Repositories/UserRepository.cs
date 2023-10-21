@@ -28,5 +28,10 @@ namespace WM.DevFreela.Infrastructure.Persistence.Repositories
 
             return Created.Entity.Id;
         }
+
+        public async Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
+        {
+            return await _dbContext.Users.SingleAsync(x => x.Email == email && x.Password == passwordHash);
+        }
     }
 }

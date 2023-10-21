@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WM.DevFreela.Core.Repositories;
+using WM.DevFreela.Core.Services;
+using WM.DevFreela.Infrastructure.Auth;
 using WM.DevFreela.Infrastructure.Persistence;
 using WM.DevFreela.Infrastructure.Persistence.Repositories;
 
@@ -15,6 +17,7 @@ namespace WM.DevFreela.Infrastructure
                 options.UseSqlServer(connectionString, b => { b.MigrationsAssembly("WM.DevFreela.Infrastructure"); });
             });
 
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
