@@ -3,13 +3,14 @@
 
 # Oque foi utilizado nesse projeto
 -- clean architecture
--- CQRL (significa Segregação de Responsabilidade de Comando e Consulta)
+-- CQRL (Command e Query)
 -- Repository Pattern
 -- Sql Server
 -- EntityFrameworkCore
 -- Dapper
 -- MediatR
-
+-- FluentValidation (com Filters)
+-- Autenticação e Autorização com JWT
 
 # Comandos para Migrations
  dotnet ef migrations add InitialMigration -s ../WM.DevFreela.Api/WM.DevFreela.Api.csproj -o ./Persistence/Migrations
