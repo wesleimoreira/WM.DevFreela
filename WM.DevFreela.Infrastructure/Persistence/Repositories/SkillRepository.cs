@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WM.DevFreela.Core.Dtos;
+using WM.DevFreela.Core.Entities;
 using WM.DevFreela.Core.Repositories;
 
 namespace WM.DevFreela.Infrastructure.Persistence.Repositories
@@ -13,11 +13,9 @@ namespace WM.DevFreela.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<SkillDto>> GetAll()
+        public async Task<IEnumerable<Skill>> GetAllAsync()
         {
-            return (from skill in await _dbContext.Skills.AsNoTracking().ToListAsync()
-                    select new SkillDto(skill.Id, skill.Description, skill.CreatedAt))
-                    .ToList();
+            return await _dbContext.Skills.AsNoTracking().ToListAsync();
         }
     }
 }

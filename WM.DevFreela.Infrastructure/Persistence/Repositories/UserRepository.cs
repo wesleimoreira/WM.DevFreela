@@ -14,10 +14,10 @@ namespace WM.DevFreela.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<UserDto> GetById(int id)
+        public async Task<User> GetById(int id)
         {
             return (from user in await _dbContext.Users.AsNoTracking().ToListAsync()
-                    select new UserDto(user.FullName, user.Email)).First();
+                    select user).First();
         }
 
         public async Task<int> AddAsync(User user)

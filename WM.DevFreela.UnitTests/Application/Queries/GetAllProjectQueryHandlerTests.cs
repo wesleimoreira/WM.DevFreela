@@ -2,7 +2,6 @@
 using WM.DevFreela.Application.Queries.GetAllProjects;
 using WM.DevFreela.Core.Entities;
 using WM.DevFreela.Core.Repositories;
-using WM.DevFreela.Infrastructure.Persistence.Repositories;
 
 namespace WM.DevFreela.UnitTests.Application.Queries
 {
@@ -36,7 +35,6 @@ namespace WM.DevFreela.UnitTests.Application.Queries
             Assert.NotEmpty(projectDtoList);
             Assert.Equal(projects.Count, projectDtoList.Count());
             await projectRepositoryMock.Received(1).GetAllAsync();
-
         }
     }
 }

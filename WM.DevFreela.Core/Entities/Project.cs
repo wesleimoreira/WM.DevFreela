@@ -21,7 +21,7 @@ namespace WM.DevFreela.Core.Entities
         public decimal TotalCost { get; private set; }
         public string Description { get; private set; }
 
-        public DateTime CreatedAt { get; private set; }
+        public DateTime? CreatedAt { get; private set; }
         public DateTime? StartedAt { get; private set; }
         public DateTime? FinishedAt { get; private set; }
         public ProjectStatusEnum Status { get; private set; }
@@ -29,9 +29,9 @@ namespace WM.DevFreela.Core.Entities
 
         // propriedades de navegação
         public int ClienteId { get; private set; }
-        public User Client { get; private set; }
+        public User Client { get;  set; }
         public int FreelancerId { get; private set; }
-        public User Freelancer { get; private set; }
+        public User Freelancer { get;  set; }
 
         public void Start()
         {

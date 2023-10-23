@@ -26,7 +26,6 @@
         public DateTime CreatedAt { get; private set; }
 
 
-
         public IEnumerable<UserSkill> Skills { get; private set; }
         public IEnumerable<Project> OwnedProjects { get; private set; }
         public IEnumerable<ProjectComment> Comments { get; private set; }

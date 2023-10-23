@@ -1,9 +1,9 @@
-﻿using WM.DevFreela.Core.Dtos;
+﻿using WM.DevFreela.Core.Entities;
 
 namespace WM.DevFreela.Core.Repositories
 {
     public interface ISkillRepository
     {
-        Task<IEnumerable<SkillDto>> GetAll();
+        Task<IEnumerable<Skill>> GetAllAsync();
     }
 }

@@ -2,7 +2,7 @@
 {
     public class ProjectDto
     {
-        public ProjectDto(int id, string title, decimal totalCost, string description, DateTime createdAt)
+        public ProjectDto(int id, string title, decimal totalCost, string description, DateTime? createdAt)
         {
             Id = id;
             Title = title;
@@ -15,6 +15,6 @@
         public string Title { get; private set; }
         public decimal TotalCost { get; private set; }
         public string Description { get; private set; }
-        public DateTime CreatedAt { get; private set; }
+        public DateTime? CreatedAt { get; private set; }
     }
 }
