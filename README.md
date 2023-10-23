@@ -11,6 +11,11 @@
 -- MediatR
 -- FluentValidation 
 -- Autenticação e Autorização com JWT
+-- Unit Test
+---- XUnit (teste unitários)
+---- NSubstitute (Mocks)
+---- Pattern AAA (Arrange - Act - Assert)
+---- Pattern Given_When_Then
 
 # Comandos para Migrations
  dotnet ef migrations add InitialMigration -s ../WM.DevFreela.Api/WM.DevFreela.Api.csproj -o ./Persistence/Migrations
