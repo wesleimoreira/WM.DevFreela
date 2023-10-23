@@ -16,6 +16,8 @@
 ---- NSubstitute (Mocks)
 ---- Pattern AAA (Arrange - Act - Assert)
 ---- Pattern Given_When_Then
+-- Microsoft Azure
+--- Azure DevOps
 
 # Comandos para Migrations
  dotnet ef migrations add InitialMigration -s ../WM.DevFreela.Api/WM.DevFreela.Api.csproj -o ./Persistence/Migrations

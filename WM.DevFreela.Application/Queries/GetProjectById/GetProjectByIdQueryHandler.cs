@@ -15,7 +15,7 @@ namespace WM.DevFreela.Application.Queries.GetProjectById
 
         public async Task<ProjectDetailsDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetById(request.Id);
+            var project = await _projectRepository.GetByIdAsync(request.Id);
 
             return new ProjectDetailsDto(
                         project.Id,

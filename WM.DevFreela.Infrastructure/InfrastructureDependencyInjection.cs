@@ -10,7 +10,7 @@ namespace WM.DevFreela.Infrastructure
 {
     public static class InfrastructureDependencyInjection
     {
-        public static void AddInfrastructureDependencyInjection(this IServiceCollection services, string? connectionString)
+        public static void AddInfrastructureDependencyInjection(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<DevFreelaDbContext>(options =>
             {

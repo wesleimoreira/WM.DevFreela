@@ -15,7 +15,8 @@ namespace WM.DevFreela.Application.Queries.GetAllProjects
 
         public async Task<IEnumerable<ProjectDto>> Handle(GetAllProjectQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.GetAll();
+            return (from project in await _repository.GetAllAsync()
+                    select new ProjectDto(project.Id, project.Title, project.TotalCost, project.Description, project.CreatedAt)).ToList();
         }
     }
 }

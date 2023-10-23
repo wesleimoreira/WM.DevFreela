@@ -12,7 +12,7 @@ namespace WM.DevFreela.Application.Commands.DeleteProject
         }
         public async Task<Unit> Handle(DeleteProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _repository.GetById(request.Id);
+            var project = await _repository.GetByIdAsync(request.Id);
 
             project.Cancel();
 

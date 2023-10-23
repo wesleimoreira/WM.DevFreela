@@ -13,7 +13,7 @@ namespace WM.DevFreela.Application.Commands.StartProject
 
         public async Task<Unit> Handle(StartProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _repository.GetById(request.Id);
+            var project = await _repository.GetByIdAsync(request.Id);
 
             project.Start();
 

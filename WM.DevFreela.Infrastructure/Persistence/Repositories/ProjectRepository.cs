@@ -14,15 +14,14 @@ namespace WM.DevFreela.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<Project> GetById(int id)
+        public async Task<Project> GetByIdAsync(int id)
         {
             return await _dbContext.Projects.AsNoTracking().FirstAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<ProjectDto>> GetAll()
+        public async Task<IEnumerable<Project>> GetAllAsync()
         {
-            return (from project in await _dbContext.Projects.AsNoTracking().ToListAsync()
-                    select new ProjectDto(project.Id, project.Title, project.TotalCost, project.Description, project.CreatedAt)).ToList();
+            return await _dbContext.Projects.AsNoTracking().ToListAsync();            
         }
 
         public async Task<int> AddAsync(Project project)
