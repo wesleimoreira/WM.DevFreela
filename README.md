@@ -1,31 +1,48 @@
 ﻿
-DevFreela
+<h1>DevFreela</h1>
 
-Esse projeto está sendo desenvolvido como base de estudo do curso MÉTODO .NET DIRETO AO PONTO tendo como instrutor Luís Felipe (Lus Dev)
-Será desenvolvido uma ferramenta onde o cliente cadastrara os projetos e o freelancer será cadastrado/convocado para implementar esse projeto.
-
-Tecnologias utilizadas 
-• .NET 7
-• clean architecture
-• CQRL (Command e Query)
-• Repository Pattern
-• Sql Server
-• EntityFrameworkCore
-• MediatR
-• FluentValidation 
-• Autenticação e Autorização com JWT
-• Unit Test
-o XUnit (teste unitários)
-o NSubstitute (Mocks)
-o Pattern AAA (Arrange - Act - Assert)
-o Pattern Given_When_Then
-• Microsoft Azure
-• Azure DevOps
+<p>
+    Esse projeto está sendo desenvolvido como base de estudo do curso MÉTODO .NET DIRETO AO PONTO tendo como instrutor Luís Felipe (Lus Dev)
+    Será desenvolvido uma ferramenta onde o cliente cadastrara os projetos e o freelancer será cadastrado/convocado para implementar esse projeto.
+</p>
 
 
-Funcionalidades
+<h2>Tecnologias utilizadas</h2>
  
-Cadastro, Listagem, Detalhes, Atualização e Remoção de projetos
-Inicio e conclusão de projetos
-Cadastro de comentários em projeto
-Cadastro, Detalhes e login de usuário
+<ul>
+    <li>.NET 7</li>
+    <li>clean architecture</li>
+    <li>CQRL (Command e Query)</li>
+    <li>Repository Pattern</li>
+    <li>Sql Server</li>
+    <li>EntityFrameworkCore</li>
+    <li>MediatR</li>
+    <li>FluentValidation </li>
+    <li>Autenticação e Autorização com JWT</li>
+    <li>
+        Unit Test
+        <ul>
+            <li>XUnit (teste unitários)</li>
+            <li>NSubstitute (Mocks)</li>
+            <li>Pattern AAA (Arrange - Act - Assert)</li>
+            <li>Pattern Given_When_Then</li>           
+        </ul>
+    </li>
+    <li>Microsoft Azure</li>
+    <li>Azure DevOps</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul> 
+ 
+<h2>Funcionalidades</h2>
+
+<p>
+    Cadastro, Listagem, Detalhes, Atualização e Remoção de projetos
+    Inicio e conclusão de projetos
+    Cadastro de comentários em projeto
+    Cadastro, Detalhes e login de usuário
+</p>
+
+ 

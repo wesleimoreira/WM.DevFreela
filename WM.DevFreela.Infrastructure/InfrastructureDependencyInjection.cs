@@ -12,6 +12,7 @@ namespace WM.DevFreela.Infrastructure
     {
         public static void AddInfrastructureDependencyInjection(this IServiceCollection services, string connectionString)
         {
+
             services.AddDbContext<DevFreelaDbContext>(options =>
             {
                 options.UseSqlServer(connectionString, b => { b.MigrationsAssembly("WM.DevFreela.Infrastructure"); });
