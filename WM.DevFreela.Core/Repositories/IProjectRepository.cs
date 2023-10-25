@@ -11,5 +11,6 @@ namespace WM.DevFreela.Core.Repositories
         Task DeleteAsync();
         Task FinishAsync();
         Task StartAsync();
+        Task SaveChangesAsync();
     }
 }

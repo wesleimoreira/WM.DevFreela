@@ -1,12 +1,10 @@
-﻿using MediatR;
-
-namespace WM.DevFreela.Application.Commands.FinishProject
+﻿namespace WM.DevFreela.Core.Dtos
 {
-    public class FinishProjectCommand : IRequest<bool>
+    public class PaymentInforDto
     {
-        public FinishProjectCommand(int id, string cvv, decimal amount, string fullName, string expiresAt, string creditCardNumber)
+        public PaymentInforDto(int idProject, string cvv, decimal amount, string fullName, string expiresAt, string creditCardNumber)
         {
-            Id = id;
+            IdProject = idProject;
             Cvv = cvv;
             Amount = amount;
             FullName = fullName;
@@ -14,7 +12,7 @@ namespace WM.DevFreela.Application.Commands.FinishProject
             CreditCardNumber = creditCardNumber;
         }
 
-        public int Id { get;  set; }      
+        public int IdProject { get; private set; }
         public string Cvv { get; private set; }
         public decimal Amount { get; private set; }
         public string FullName { get; private set; }

@@ -30,10 +30,7 @@
     </li>
     <li>Microsoft Azure</li>
     <li>Azure DevOps</li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+	<li>RabbitMQ</li>
 </ul> 
  
 <h2>Funcionalidades</h2>

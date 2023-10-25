@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WM.DevFreela.Api", "WM.DevF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WM.DevFreela.Application", "WM.DevFreela.Application\WM.DevFreela.Application.csproj", "{277D8A08-3A41-4AE2-BB21-80F62FD4F301}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WM.DevFreela.UnitTests", "WM.DevFreela.UnitTests\WM.DevFreela.UnitTests.csproj", "{00CA8223-DE63-4A3A-B9F5-FFD29467B6CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WM.DevFreela.UnitTests", "WM.DevFreela.UnitTests\WM.DevFreela.UnitTests.csproj", "{00CA8223-DE63-4A3A-B9F5-FFD29467B6CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

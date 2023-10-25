@@ -1,25 +1,34 @@
 ﻿using MediatR;
+using WM.DevFreela.Core.Dtos;
 using WM.DevFreela.Core.Repositories;
+using WM.DevFreela.Core.Services;
 
 namespace WM.DevFreela.Application.Commands.FinishProject
 {
-    public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommand, Unit>
+    public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommand, bool>
     {
-        private readonly IProjectRepository _repository;
-        public FinishProjectCommandHandler(IProjectRepository repository)
+        private readonly IPaymentService _paymentService;
+        private readonly IProjectRepository _projectRepository;
+
+        public FinishProjectCommandHandler(IProjectRepository repository, IPaymentService paymentService)
         {
-            _repository = repository;
+            _projectRepository = repository;
+            _paymentService = paymentService;
         }
 
-        public async Task<Unit> Handle(FinishProjectCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(FinishProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _repository.GetByIdAsync(request.Id);
+            var project = await _projectRepository.GetByIdAsync(request.Id);
 
-            project.Finish();
+            var paymentInfoDto = new PaymentInforDto(request.Id, request.Cvv, request.Amount, request.FullName, request.ExpiresAt, request.CreditCardNumber);
 
-            await _repository.FinishAsync();
+            _paymentService.ProcessPaymentAsync(paymentInfoDto);
 
-            return Unit.Value;
+            project.SetPaymentPending();
+
+            await _projectRepository.SaveChangesAsync();
+
+            return true;
         }
     }
 }

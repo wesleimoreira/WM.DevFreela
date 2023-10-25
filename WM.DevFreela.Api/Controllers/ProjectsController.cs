@@ -5,18 +5,19 @@ using WM.DevFreela.Application.Commands.CreateComment;
 using WM.DevFreela.Application.Commands.CreateProject;
 using WM.DevFreela.Application.Commands.DeleteProject;
 using WM.DevFreela.Application.Commands.FinishProject;
+using WM.DevFreela.Application.Commands.StartProject;
 using WM.DevFreela.Application.Commands.UpdateProject;
 using WM.DevFreela.Application.Queries.GetAllProjects;
 using WM.DevFreela.Application.Queries.GetProjectById;
 
 namespace WM.DevFreela.Api.Controllers
-{   
+{
     [ApiController]
     [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ProjectsController(IMediator mediator)=> _mediator = mediator;
+        public ProjectsController(IMediator mediator) => _mediator = mediator;
 
 
         [HttpDelete("{id:int}")]
@@ -32,18 +33,22 @@ namespace WM.DevFreela.Api.Controllers
         [Authorize(Roles = "Client")]
         public async Task<IActionResult> Start(int id)
         {
-            await _mediator.Send(new FinishProjectCommand(id));
+            await _mediator.Send(new StartProjectCommand(id));
 
             return NoContent();
         }
 
         [HttpPut("{id:int}/finish")]
-        [Authorize(Roles = "Client")]
-        public async Task<IActionResult> Finish(int id)
+        public async Task<IActionResult> Finish(int id, [FromBody] FinishProjectCommand command)
         {
-            await _mediator.Send(new FinishProjectCommand(id));
+            command.Id = id;
 
-            return NoContent();
+            var result = await _mediator.Send(command);
+
+            if (!result)
+                return BadRequest("O pagamento não pôde ser processado.");
+
+            return Accepted();
         }
 
         [HttpGet("{id:int}")]
